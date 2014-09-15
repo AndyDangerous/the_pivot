@@ -5,29 +5,28 @@
     margin-left: 20px;
   }
 </style>
-
 <%= form_for @listing do |f| %>
-  <h2>New Job Listing</h2>
-  <%= f.label :title, :class => 'control_label' %>
-  <%= f.text_field :title, :class => 'text_field' %>
+  <div class="form-inline">
+    <%= f.label :title, :class => 'form_label_name' %>
+    <%= f.text_field :title, :class => 'form_control' %>
 
-  <%= f.label :description, :class => 'control_label' %>
-  <%= f.text_field :description, :class => 'text_field' %>
+    <%= f.label :description, :class => 'form_label_name' %>
+    <%= f.text_field :description, :class => 'form_control' %>
 
-  <%= f.label :pay_rate, :class => 'control_label' %>
-  <%= f.text_field :pay_rate,:class => 'text_field' %>
+    <%= f.label :pay_rate, :class => 'form_label_name' %>
+    <%= f.text_field :pay_rate,:class => 'form_control' %>
 
 
-  <%= f.label :part_time, :class => 'control_label' %>
-  <%= f.radio_button(:job_type, "part-time", :id => 'part-time',
-  :checked => (:pay_type == 'part-time')? true:false) %>
-  <%= f.label :full_time, :class => 'control_label' %>
-  <%= f.radio_button(:job_type, "full-time", :id => 'full-time',
-  :checked => (:pay_type == 'full-time')? true:false) %>
+    <%= f.label :part_time, :class => 'form_label_name' %>
+    <%= f.radio_button(:job_type, "part-time", :id => 'part-time',
+    :checked => (:pay_type == 'part-time')? true:false) %>
+    <%= f.label :full_time, :class => 'form_label_name' %>
+    <%= f.radio_button(:job_type, "full-time", :id => 'full-time',
+    :checked => (:pay_type == 'full-time')? true:false) %>
 
-  <%= f.label :closing, :id => 'closing' %>
-  <%= f.datetime_select :closing, :ampm => true, :minute_step => 15%>
+    <%= f.label :closing, :id => 'closing' %>
+    <%= f.datetime_select :closing, :ampm => true, :minute_step => 15%>
 
-  <%= f.submit %>
-
+    <%= f.submit %>
+  </div>
 <% end %>
