@@ -1,32 +1,45 @@
-<style>
-  #closing{
-    display: block;
-    margin-top: 20px;
-    margin-left: 20px;
-  }
-</style>
-<%= form_for @listing do |f| %>
-  <div class="form-inline">
-    <%= f.label :title, :class => 'form_label_name' %>
-    <%= f.text_field :title, :class => 'form_control' %>
+<%= form_for @listing, :html => {:id => 'new_listing_form', :class => 'form-horizontal'} do |f| %>
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-lg-2', :id => 'text_left'%>
+    <div class="col-lg-10 col-md-10">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+  </div>
 
-    <%= f.label :description, :class => 'form_label_name' %>
-    <%= f.text_field :description, :class => 'form_control' %>
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label col-lg-2', :id => 'text_left' %>
+    <div class="col-lg-10">
+      <%= f.text_area :description, :class => 'form-control' %>
+    </div>
+  </div>
 
-    <%= f.label :pay_rate, :class => 'form_label_name' %>
-    <%= f.text_field :pay_rate,:class => 'form_control' %>
+  <div class="form-group">
+    <%= f.label :pay_rate, :class => 'control-label col-lg-2', :id => 'text_left' %>
+    <div class='col-lg-10'>
+      <%= f.text_field :pay_rate, :class => 'form-control' %>
+    </div>
+  </div>
 
+  <div class="form-group">
+    <%= f.label :positions, :class => 'control-label col-lg-2', :id => 'text_left' %>
+    <div class='col-lg-10 dropdown_padding'>
+      <%= f.select :positions, (1..20).to_a %>
+    </div>
+  </div>
 
-    <%= f.label :part_time, :class => 'form_label_name' %>
+  <div class="form-group col-lg-12">
+    <%= f.label :part_time, :class => 'control-label', :id=> 'text_left' %>
     <%= f.radio_button(:job_type, "part-time", :id => 'part-time',
     :checked => (:pay_type == 'part-time')? true:false) %>
-    <%= f.label :full_time, :class => 'form_label_name' %>
-    <%= f.radio_button(:job_type, "full-time", :id => 'full-time',
+    <%= f.label :full_time, :class => 'control-label form_padding_edit_listing' %>
+    <%= f.radio_button(:pay_type, "full-time", :id => 'full-time',
     :checked => (:pay_type == 'full-time')? true:false) %>
 
-    <%= f.label :closing, :id => 'closing' %>
-    <%= f.datetime_select :closing, :ampm => true, :minute_step => 15%>
 
-    <%= f.submit %>
+    <%= f.label :closing, :id => 'closing', :class => 'form_padding_edit_listing' %>
+    <%= f.datetime_select :closing, :ampm => true, :minute_step => 15, :class => 'form-control' %>
+  </div>
+  <div class="form-group col-lg-12">
+      <%= f.submit "Submit", :class => "btn btn-primary btn-lg" %>
   </div>
 <% end %>
